@@ -1,0 +1,112 @@
+<html>
+<head>
+	<meta charset="utf-8" /> 
+	<title>肝爆原件计算</title>
+</head>
+<body>
+	<img src='logo.png'/>
+	<p>需求: <input type='number' name='require' id='require'/></p>
+	<input type='hidden' id='yjMax' value='30'/>
+	<input type='hidden' id='dqMax' value='40'/>
+	<input type='hidden' id='htMax' value='20'/>
+	<input type='hidden' id='gdMax' value='3'/>
+	<!--
+	<p>元件上限可自行修改，数字太大有可能影响计算效率。</p>
+	-->
+	<p><input value='计算' type='button' onclick='getResult()'/></p>
+	<table border='1px solid' >
+		<thead>
+			<tr>
+				<th>冶金</th>
+				<th>电气</th>
+				<th>航天</th>
+				<th>古代</th>
+			</tr>
+		</thead>
+		<tbody id='data'>
+			<tr align="center">
+				<td colspan='4'>
+					输入需求，点击计算！
+				</td>
+			<tr>
+			<tr align="center">
+				<td colspan='4'>
+					干杯[]~(￣▽￣)~*]
+				</td>
+			<tr>
+			<tr align="center">
+				<td colspan='4'>
+					发起进攻(　 ´-ω ･)▄︻┻┳══━一
+				</td>
+			<tr>
+			<tr align="center">
+				<td colspan='4'>
+				﻿༺༺超༒神༻༻
+				</td>
+			<tr>
+		<tbody>
+		<tfoot>
+			<tr>
+				<td colspan='4'>
+					powerd by 肝爆-胡萝卜联盟 QQ群:283565193
+				</td>
+			<tr>
+			<tr>
+				<td colspan='4'>
+					胡萝卜联盟（编程技术） QQ群:478338878
+				</td>
+			<tr>
+			<tr>
+				<td colspan='4'>
+					农药-胡萝卜联盟 QQ群:530656067
+				</td>
+			<tr>
+		</tfoot>
+	</table>
+</body>
+<script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	function getResult() {
+		$('#data').empty();	
+		
+		
+		var total = $('#require').val();
+		if(!total) {
+			alert('请输入需求！');
+			return false;
+		}
+		
+		var yjS = 37;
+		var dqS = 23;
+		var htS = 59;
+		var gdS = 271;
+		
+		var yjMax = $('#yjMax').val();
+		var dqMax = $('#dqMax').val();
+		var htMax = $('#htMax').val();
+		var gdMax = $('#yjMax').val();
+		
+		var time = 0;
+		
+		for(var yj = 0;yj < yjMax;yj++){
+			for(var dq = 0;dq < dqMax;dq++){		
+				for(var ht = 0;ht < htMax;ht++){		
+					for(var gd = 0;gd < gdMax;gd++){		
+						if( (yj*yjS + dq*dqS + ht*htS + gd*gdS) == total) {
+							var element = '<tr><td>%yj%</td><td>%dq%</td><td>%ht%</td><td>%gd%</td></tr>';
+							element = element.replace('%yj%',yj).replace('%dq%',dq).replace('%ht%',ht).replace('%gd%',gd);
+							$('#data').append($(element));
+							time++;
+						}
+					}
+				}
+			}
+		}
+		
+		if(time == 0) {
+			var element = '<td colspan="4">无结果</td>'
+			$('#data').append($(element));
+		}
+	}
+</script>
+</html>
